@@ -1,31 +1,42 @@
-Model Overview
-Model Used: XGBoost Classifier 
-Target Variable: goal
-Problem Type: Binary classification
 
-Metric  
-Value
-Accuracy
-0.74
-Precision
-0.60
-Recall
-0.77
-F1 Score
-0.0.6
-ROC AUC Score
-0.86
+Model Metrics Summary – Brain Tumor Classification
+===================================================
 
-Class Imbalance Handling
-Strategies Used: scale_pos_weight for XGBoost, SMOTE Resampling, Undersampling
-Reason: Dataset was heavily imbalanced with far fewer goals than non-goals with a 9.85 imbalanced ratio.
+This project compares three different model architectures trained on MRI brain scan images to classify between tumor and no tumor cases.
+Below are the evaluation results based on test set performance.
 
-Hyperparameter Tunning/Cross-Validation
-Method: 5-fold RandomizedSearchCV 
-CV Metric: Mean F1 score
-Parameters: 'n_estimators', 'learning_rate',  'max_depth�,  'min_child_weight' 'gamma', 'lambda', 'alpha' , 'scale_pos_weight'
+Model             | Accuracy | Precision | Recall | F1-Score | Test Loss
+------------------|----------|-----------|--------|----------|-----------
+MobileNetV2       | 0.95     | 0.97      | 1.00   | 0.98     | 0.14
+Custom CNN        | 0.89     | 0.99      | 0.85   | 0.91     | 0.26
+EfficientNetB0    | 0.68     | 1.00      | 0.55   | 0.71     | 0.85
 
-Business Interpretation
-A recall of 0.77 means the model correctly identified 79.6% of true goals.
-Useful for evaluating player efficiency or simulating scoring opportunities.
+Best Performing Model: MobileNetV2
+- Highest F1-score (0.98), indicating excellent balance between precision and recall
+- Perfect recall (1.00), minimizing false negatives (critical in medical applications)
 
+Confusion Matrices (Test Set)
+-----------------------------
+
+MobileNetV2
+Predicted →     No Tumor     Tumor
+Actual
+No Tumor            231         25
+Tumor                 2         730
+
+Custom CNN
+Predicted →     No Tumor     Tumor
+Actual
+No Tumor            254          2
+Tumor               109        625
+
+EfficientNetB0
+Predicted →     No Tumor     Tumor
+Actual
+No Tumor            185         71
+Tumor               331        403
+
+Notes:
+- Recall was emphasized due to the medical context, where missing a tumor is more dangerous than a false positive.
+- Custom CNN performed well but had significantly lower recall than MobileNetV2.
+- EfficientNetB0 struggled with generalization on external test data despite fine-tuning, likely due to overfitting and lack of robustness to domain variation
