@@ -37,6 +37,7 @@ The goal of this capstone project is to build a binary image classification mode
 - **Labels:** Binary classification — Tumor / No Tumor  
 - **Preprocessing:** Resizing, normalization, and data augmentation (e.g. flipping, zooming, rotation)  
 - Source: Kaggle- https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset
+  
 -| Meta Data      | Raw Imaged | Cleaned Images | 
 |----------------|----------|-----------|
 | Image Size | 368 different image sizes     | (224, 224      | 
