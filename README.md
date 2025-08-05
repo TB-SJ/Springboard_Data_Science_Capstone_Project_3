@@ -38,11 +38,12 @@ The goal of this capstone project is to build a binary image classification mode
 - **Preprocessing:** Resizing, normalization, and data augmentation (e.g. flipping, zooming, rotation)  
 - Source: Kaggle- https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset
   
-| Month    | Savings |
-| -------- | ------- |
-| January  | $250    |
-| February | $80     |
-| March    | $420    |
+| Meta Data         | Raw Images | Cleaned Images |
+| :---------------- | :------: | ----: |
+| Image Size        |   388 different sizes   | (224, 224) |
+| Image Mode           |   4 different modes   | RGB |
+
+
 
 
 
